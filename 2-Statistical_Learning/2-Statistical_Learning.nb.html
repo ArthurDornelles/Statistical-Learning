@@ -1764,9 +1764,15 @@ pre code {
 Statistical Learning - second Edition”. The series of notebooks start at
 the second chapter - Statistical Learning - since the first chapter does
 not have any R exercises.</p>
-<p>Before starting, R can be downloaded from <a href="http://cran.r-project.org" class="uri">http://cran.r-project.org</a>. This notebook is written and
-build using RStudio, which can be freely downloaded from
-&lt;center&gt;<a href="http:rstudio.com" class="uri">http:rstudio.com</a>&lt;&gt;</p>
+Before starting, R can be downloaded from
+<center>
+<a href="http://cran.r-project.org" class="uri">http://cran.r-project.org</a>.
+</center>
+<p>This notebook is written and build using RStudio, which can be freely
+downloaded from</p>
+<center>
+<a href="http://rstudio.com" class="uri">http://rstudio.com</a>.
+</center>
 <div id="basic-commands" class="section level2">
 <h2>2.3.1 Basic Commands</h2>
 <p>The following command instructs R to join together the numbers 1, 2,
@@ -1822,30 +1828,196 @@ a new help file window with additional information about the function
 <pre><code>[1]  2 10  5</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The <strong>ls()</strong> function allow us to look at a list of all
+of the objects, such as data and functions, that we have saved so far.
+The <strong>rm()</strong> function can be used to delete any that we
+don’t want.</p>
+<!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubHMoKVxucm0oeCx5KVxuYGBgIn0= -->
-<pre class="r"><code>ls()
-rm(x,y)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubHMoKVxuYGBgIn0= -->
+<pre class="r"><code>ls()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwieFwiIFwieVwiXG4ifQ== -->
+<pre><code>[1] &quot;x&quot; &quot;y&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0oeCx5KVxuYGBgIn0= -->
+<pre class="r"><code>rm(x,y)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>And is also possible to remove all objects at once:</p>
+<!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0obGlzdD1scygpKVxuYGBgIn0= -->
 <pre class="r"><code>rm(list=ls())</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>The <strong>matrix()</strong> function will be essencial to use
+algebra in our statistical learning. The function takes a
+<strong>data</strong> parameter and a number os rows and columns that
+will compose the matrix.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBtYXRyaXgoZGF0YSA9IGMoMSwyLDMsNCksbnJvdyA9IDIsIG5jb2wgPSAyKVxueFxuYGBgIn0= -->
+<pre class="r"><code>x &lt;- matrix(data = c(1,2,3,4),nrow = 2, ncol = 2)
+x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We don’t need to specify the name of the parameters once that we put
+them in the correct order.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBtYXRyaXgoYygxLDIsMyw0KSwyLDIpXG54XG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- matrix(c(1,2,3,4),2,2)
+x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>By default <strong>R</strong> creates matrices by successively
+filling in columns. Alternativelty the <strong>byrow = TRUE</strong>
+option can be used to populate the matrix in order of the rows.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF0cml4KGMoMSwyLDMsNCksMiwyLGJ5cm93ID0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>matrix(c(1,2,3,4),2,2,byrow = TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAyXG5bMixdICAgIDMgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    2
+[2,]    3    4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We can get the square root of a number, a vector or a matrix with the
+function <strong>sqrt()</strong>.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3FydCh4KVxuYGBgIn0= -->
+<pre class="r"><code>sqrt(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgWywxXSAgICAgWywyXVxuWzEsXSAxLjAwMDAwMCAxLjczMjA1MVxuWzIsXSAxLjQxNDIxNCAyLjAwMDAwMFxuIn0= -->
+<pre><code>         [,1]     [,2]
+[1,] 1.000000 1.732051
+[2,] 1.414214 2.000000</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Similarly, we can get the value of each element powered by two:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueF4yXG5gYGAifQ== -->
+<pre class="r"><code>x^2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICA5XG5bMixdICAgIDQgICAxNlxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    9
+[2,]    4   16</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The <strong>rnorm()</strong> function generates a vector of random
+normal variables, with first argument <strong>n</strong> the sample
+size. Each time we call this function, we will get a different
+answer.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueDwtcm5vcm0oNTApXG54XG5gYGAifQ== -->
+<pre class="r"><code>x&lt;-rnorm(50)
+x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAtMC45NjEwNzQ0MCAgMC42NDI1ODc2MiAtMS41NDc4MzU5MiAtMS4yNDk3ODc2NyAgMC4xMDQ5MDYxNiAtMS41OTMxNzE4NCAgMC4zMzQzOTAxMCAgMi43NTY0NzU3NiAgMC40MjM0MDI3MlxuWzEwXSAgMC4wMjg3OTk5MyAtMC4xMzAwODkwMiAgMC45NzIwOTMzMiAgMC44MzgxNTcxMCAtMC4yMDQ1OTMyNSAtMC44MjMzMzQzMiAtMC44MjY5ODI2OCAgMC4wMjk5NjI1MSAtMC43OTA5NTY2MVxuWzE5XSAtMC40NDI1NjE3OCAtMC44NTg1NDIyOCAgMS4yNTMwMTg1NSAtMC40MjU4MjA1OSAgMS4zOTgxNjA2OSAgMS4zMDEyOTU0MCAgMC41NTY3NTYzNSAgMC43OTc3OTQ2NSAgMC40MjQ0MDE2NlxuWzI4XSAgMC4wNTYyODg0MSAtMC45OTYyMzgzMyAgMC43MTYwMDk1MCAgMC42Njk5MTM4OSAgMS4xMTA2NDgxMCAtMC45MjI3NTY5OSAgMC44MzI3NzM1NiAgMC41MTI3MDc5OCAtMS4yNTc5ODUzOFxuWzM3XSAtMC44MDkyNzc0MCAgMC4xNDg3NDA2MSAtMC40NTE0Njk1NiAgMS4wNTA3MjAxNCAtMC4wOTk5MzcyNiAgMC42MzIyNzA4NiAgMC41NTYxMjA0NiAtMC4yMTQxNjQwOSAtMC42OTYyMTUwM1xuWzQ2XSAgMS44ODYxMDQ5MiAtMS4yNjg2NjAyMCAgMS4wNTk2Mjc4MiAtMC42MDQ3NzE1OCAgMS4xNTY2MjY0NlxuIn0= -->
+<pre><code> [1] -0.96107440  0.64258762 -1.54783592 -1.24978767  0.10490616 -1.59317184  0.33439010  2.75647576  0.42340272
+[10]  0.02879993 -0.13008902  0.97209332  0.83815710 -0.20459325 -0.82333432 -0.82698268  0.02996251 -0.79095661
+[19] -0.44256178 -0.85854228  1.25301855 -0.42582059  1.39816069  1.30129540  0.55675635  0.79779465  0.42440166
+[28]  0.05628841 -0.99623833  0.71600950  0.66991389  1.11064810 -0.92275699  0.83277356  0.51270798 -1.25798538
+[37] -0.80927740  0.14874061 -0.45146956  1.05072014 -0.09993726  0.63227086  0.55612046 -0.21416409 -0.69621503
+[46]  1.88610492 -1.26866020  1.05962782 -0.60477158  1.15662646</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We create two correlated sets of numbers, <strong>x</strong> and
+<strong>y</strong>, and use the <strong>cor()</strong> function to
+compute the correlation between them.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueSA8LSB4ICsgcm5vcm0oNTAsbWVhbj01MCwgc2QgPSAuMSlcbmNvcih4LHkpXG5gYGAifQ== -->
+<pre class="r"><code>y &lt;- x + rnorm(50,mean=50, sd = .1)
+cor(x,y)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTk2NTU5MlxuIn0= -->
+<pre><code>[1] 0.9965592</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We can set the a seed to reproduce the exact same set of random
+numbers: we can use the <strong>set.seed()</strong> function to do
+this.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTMwMylcbnJub3JtKDUwKVxuYGBgIn0= -->
+<pre class="r"><code>set.seed(1303)
+rnorm(50)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAtMS4xNDM5NzYzMTQ1ICAxLjM0MjEyOTM2NTYgIDIuMTg1MzkwNDc1NyAgMC41MzYzOTI1MTc5ICAwLjA2MzE5Mjk2NjUgIDAuNTAyMjM0NDgyNSAtMC4wMDA0MTY3MjQ3XG4gWzhdICAwLjU2NTgxOTg0MDUgLTAuNTcyNTIyNjg5MCAtMS4xMTAyMjUwMDczIC0wLjA0ODY4NzEyMzQgLTAuNjk1NjU2MjE3NiAgMC44Mjg5MTc0ODAzICAwLjIwNjY1Mjg1NTFcblsxNV0gLTAuMjM1Njc0NTA5MSAtMC41NTYzMTA0OTE0IC0wLjM2NDc1NDM1NzEgIDAuODYyMzU1MDM0MyAtMC42MzA3NzE1MzU0ICAwLjMxMzYwMjEyNTIgLTAuOTMxNDk1MzE3N1xuWzIyXSAgMC44MjM4Njc2MTg1ICAwLjUyMzM3MDcwMjEgIDAuNzA2OTIxNDEyMCAgMC40MjAyMDQzMjU2IC0wLjI2OTA1MjE1NDcgLTEuNTEwMzE3Mjk5OSAtMC42OTAyMTI0NzY2XG5bMjldIC0wLjE0MzQ3MTk1MjQgLTEuMDEzNTI3NDA5OSAgMS41NzMyNzM3MzYxICAwLjAxMjc0NjUwNTUgIDAuODcyNjQ3MDQ5OSAgMC40MjIwNjYxOTA1IC0wLjAxODgxNTc5MTdcblszNl0gIDIuNjE1NzQ4OTY4OSAtMC42OTMxNDAxNzQ4IC0wLjI2NjMyMTc4MTAgLTAuNzIwNjM2NDQxMiAgMS4zNjc3MzQyMDY1ICAwLjI2NDAwNzMzMjIgIDAuNjMyMTg2ODA3NFxuWzQzXSAtMS4zMzA2NTA5ODU4ICAwLjAyNjg4ODgxODIgIDEuMDQwNjM2MzIwOCAgMS4zMTIwMjM3OTg1IC0wLjAzMDAwMjA3NjcgLTAuMjUwMDI1NzEyNSAgMC4wMjM0MTQ0ODU3XG5bNTBdICAxLjY1OTg3MDY1NTdcbiJ9 -->
+<pre><code> [1] -1.1439763145  1.3421293656  2.1853904757  0.5363925179  0.0631929665  0.5022344825 -0.0004167247
+ [8]  0.5658198405 -0.5725226890 -1.1102250073 -0.0486871234 -0.6956562176  0.8289174803  0.2066528551
+[15] -0.2356745091 -0.5563104914 -0.3647543571  0.8623550343 -0.6307715354  0.3136021252 -0.9314953177
+[22]  0.8238676185  0.5233707021  0.7069214120  0.4202043256 -0.2690521547 -1.5103172999 -0.6902124766
+[29] -0.1434719524 -1.0135274099  1.5732737361  0.0127465055  0.8726470499  0.4220661905 -0.0188157917
+[36]  2.6157489689 -0.6931401748 -0.2663217810 -0.7206364412  1.3677342065  0.2640073322  0.6321868074
+[43] -1.3306509858  0.0268888182  1.0406363208  1.3120237985 -0.0300020767 -0.2500257125  0.0234144857
+[50]  1.6598706557</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The <strong>mean()</strong> and <strong>var()</strong> functions can
+be used to compute the mean and variance of a vector of numbers. We can
+apply <strong>sqrt()</strong> after the <strong>var()</strong> function
+to have the standard deviation or simply use the <strong>sd()</strong>
+function.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMylcbnkgPC0gcm5vcm0oMTAwKVxuY2F0KFwiTWVhbjpcIixtZWFuKHkpLFwiXFxuVmFyOlwiLHZhcih5KSxcIlxcblNxcnQoVmFyKTpcIixzcXJ0KHZhcih5KSksXCJcXG5TdGFuZGFyZCBEZXZpYXRpb246XCIsc2QoeSkpXG5gYGAifQ== -->
+<pre class="r"><code>set.seed(3)
+y &lt;- rnorm(100)
+cat(&quot;Mean:&quot;,mean(y),&quot;\nVar:&quot;,var(y),&quot;\nSqrt(Var):&quot;,sqrt(var(y)),&quot;\nStandard Deviation:&quot;,sd(y))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVhbjogMC4wMTEwMzU1NyBcblZhcjogMC43MzI4Njc1IFxuU3FydChWYXIpOiAwLjg1NjA3NjggXG5TdGFuZGFyZCBEZXZpYXRpb246IDAuODU2MDc2OFxuIn0= -->
+<pre><code>Mean: 0.01103557 
+Var: 0.7328675 
+Sqrt(Var): 0.8560768 
+Standard Deviation: 0.8560768</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="graphics" class="section level2">
+<h2>2.3.2 Graphics</h2>
 <div id="references" class="section level3">
 <h3>References</h3>
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the
-toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and
-output will be saved alongside it (click the <em>Preview</em> button or
-press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
+<ol style="list-style-type: decimal">
+<li>James, G.; Witten, D.; Hastie, T.; Tibshirani, R. <strong>An
+Introduction to Statistical Learning - Second Edition</strong>.
+Springer, 2021.</li>
+</ol>
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgU3R1ZGllcyAtIDIuIExhYiBJbnRyb2R1Y3Rpb24gdG8gUiINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQpUaGlzIG5vdGVib29rIGlzIGEgc2V0IG9mIHN0dWRpZXMgZm9yIHRoZSBib29rICJBbiBJbnRyb2R1Y3Rpb24gVG8gU3RhdGlzdGljYWwgTGVhcm5pbmcgLSBzZWNvbmQgRWRpdGlvbiIuIFRoZSBzZXJpZXMgb2Ygbm90ZWJvb2tzIHN0YXJ0IGF0IHRoZSBzZWNvbmQgY2hhcHRlciAtIFN0YXRpc3RpY2FsIExlYXJuaW5nIC0gc2luY2UgdGhlIGZpcnN0IGNoYXB0ZXIgZG9lcyBub3QgaGF2ZSBhbnkgUiBleGVyY2lzZXMuDQoNCkJlZm9yZSBzdGFydGluZywgUiBjYW4gYmUgZG93bmxvYWRlZCBmcm9tIDxodHRwOi8vY3Jhbi5yLXByb2plY3Qub3JnPi4gVGhpcyBub3RlYm9vayBpcyB3cml0dGVuIGFuZCBidWlsZCB1c2luZyBSU3R1ZGlvLCB3aGljaCBjYW4gYmUgZnJlZWx5IGRvd25sb2FkZWQgZnJvbQ0KXDxjZW50ZXI+PGh0dHA6cnN0dWRpby5jb20+PFxjZW50ZXI+DQoNCiMjIDIuMy4xIEJhc2ljIENvbW1hbmRzDQpUaGUgZm9sbG93aW5nIGNvbW1hbmQgaW5zdHJ1Y3RzIFIgdG8gam9pbiB0b2dldGhlciB0aGUgbnVtYmVycyAxLCAyLCAzLCBhbmQgNSwgYW5kIHRvIHNhdmUgdGhlbSBhcyBhIHZlY3RvciBuYW1lZCAqKngqKi4gV2hlbiB3ZSB0eXBlICoqeCoqLCBpdCBnaXZlcyB1cyBiYWNrIHRoZSB2ZWN0b3IuDQpgYGB7cn0NCnggPC0gYygxLDMsMiw1KQ0KeA0KYGBgDQoNCldlIGNhbiBhbHNvIHNhdmUgdGhpbmdzIHVzaW5nICoqPSoqIHJhdGhlciB0aGFuICoqPC0qKjoNCmBgYHtyfQ0KeCA9IGMoMSw2LDIpDQp5ID0gYygxLDQsMykNCmMoeCx5KQ0KYGBgDQpJbiBhZGRpdGlvbnMsIHR5cGluZyAqKj9mdW5jbmFtZSoqIHdpbGwgY2F1c2UgUiB0byBvcGVuIGEgbmV3IGhlbHAgZmlsZSB3aW5kb3cgd2l0aCBhZGRpdGlvbmFsIGluZm9ybWF0aW9uIGFib3V0IHRoZSBmdW5jdGlvbiAqKmZ1bmNuYW1lKCkqKi4NCldlIGNhbiBjaGVjayBhIHZhcmlhYmxlIGxlbmd0aCB1c2luZyB0aGUgKipsZW5ndGgoKSoqIGZ1bmN0aW9uLg0KYGBge3J9DQpsZW5ndGgoeCkNCmxlbmd0aCh5KQ0KeCt5DQpgYGANCmBgYHtyfQ0KbHMoKQ0Kcm0oeCx5KQ0KYGBgDQpgYGB7cn0NCnJtKGxpc3Q9bHMoKSkNCmBgYA0KDQojIyMgUmVmZXJlbmNlcw0KDQoNCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4NCg0KV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgU3R1ZGllcyAtIDIuIExhYiBJbnRyb2R1Y3Rpb24gdG8gUiINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQpUaGlzIG5vdGVib29rIGlzIGEgc2V0IG9mIHN0dWRpZXMgZm9yIHRoZSBib29rICJBbiBJbnRyb2R1Y3Rpb24gVG8gU3RhdGlzdGljYWwgTGVhcm5pbmcgLSBzZWNvbmQgRWRpdGlvbiIuIFRoZSBzZXJpZXMgb2Ygbm90ZWJvb2tzIHN0YXJ0IGF0IHRoZSBzZWNvbmQgY2hhcHRlciAtIFN0YXRpc3RpY2FsIExlYXJuaW5nIC0gc2luY2UgdGhlIGZpcnN0IGNoYXB0ZXIgZG9lcyBub3QgaGF2ZSBhbnkgUiBleGVyY2lzZXMuDQoNCkJlZm9yZSBzdGFydGluZywgUiBjYW4gYmUgZG93bmxvYWRlZCBmcm9tIA0KPGNlbnRlcj48aHR0cDovL2NyYW4uci1wcm9qZWN0Lm9yZz4uPC9jZW50ZXI+DQpUaGlzIG5vdGVib29rIGlzIHdyaXR0ZW4gYW5kIGJ1aWxkIHVzaW5nIFJTdHVkaW8sIHdoaWNoIGNhbiBiZSBmcmVlbHkgZG93bmxvYWRlZCBmcm9tDQoNCjxjZW50ZXI+PGh0dHA6Ly9yc3R1ZGlvLmNvbT4uPC9jZW50ZXI+DQoNCiMjIDIuMy4xIEJhc2ljIENvbW1hbmRzDQpUaGUgZm9sbG93aW5nIGNvbW1hbmQgaW5zdHJ1Y3RzIFIgdG8gam9pbiB0b2dldGhlciB0aGUgbnVtYmVycyAxLCAyLCAzLCBhbmQgNSwgYW5kIHRvIHNhdmUgdGhlbSBhcyBhIHZlY3RvciBuYW1lZCAqKngqKi4gV2hlbiB3ZSB0eXBlICoqeCoqLCBpdCBnaXZlcyB1cyBiYWNrIHRoZSB2ZWN0b3IuDQpgYGB7cn0NCnggPC0gYygxLDMsMiw1KQ0KeA0KYGBgDQoNCldlIGNhbiBhbHNvIHNhdmUgdGhpbmdzIHVzaW5nICoqPSoqIHJhdGhlciB0aGFuICoqPC0qKjoNCmBgYHtyfQ0KeCA9IGMoMSw2LDIpDQp5ID0gYygxLDQsMykNCmMoeCx5KQ0KYGBgDQpJbiBhZGRpdGlvbnMsIHR5cGluZyAqKj9mdW5jbmFtZSoqIHdpbGwgY2F1c2UgUiB0byBvcGVuIGEgbmV3IGhlbHAgZmlsZSB3aW5kb3cgd2l0aCBhZGRpdGlvbmFsIGluZm9ybWF0aW9uIGFib3V0IHRoZSBmdW5jdGlvbiAqKmZ1bmNuYW1lKCkqKi4NCldlIGNhbiBjaGVjayBhIHZhcmlhYmxlIGxlbmd0aCB1c2luZyB0aGUgKipsZW5ndGgoKSoqIGZ1bmN0aW9uLg0KYGBge3J9DQpsZW5ndGgoeCkNCmxlbmd0aCh5KQ0KeCt5DQpgYGANClRoZSAqKmxzKCkqKiBmdW5jdGlvbiBhbGxvdyB1cyB0byBsb29rIGF0IGEgbGlzdCBvZiBhbGwgb2YgdGhlIG9iamVjdHMsIHN1Y2ggYXMgZGF0YSBhbmQgZnVuY3Rpb25zLCB0aGF0IHdlIGhhdmUgc2F2ZWQgc28gZmFyLiBUaGUgKipybSgpKiogZnVuY3Rpb24gY2FuIGJlIHVzZWQgdG8gZGVsZXRlIGFueSB0aGF0IHdlIGRvbid0IHdhbnQuDQpgYGB7cn0NCmxzKCkNCnJtKHgseSkNCmBgYA0KQW5kIGlzIGFsc28gcG9zc2libGUgdG8gcmVtb3ZlIGFsbCBvYmplY3RzIGF0IG9uY2U6DQpgYGB7cn0NCnJtKGxpc3Q9bHMoKSkNCmBgYA0KVGhlICoqbWF0cml4KCkqKiBmdW5jdGlvbiB3aWxsIGJlIGVzc2VuY2lhbCB0byB1c2UgYWxnZWJyYSBpbiBvdXIgc3RhdGlzdGljYWwgbGVhcm5pbmcuIFRoZSBmdW5jdGlvbiB0YWtlcyBhICoqZGF0YSoqIHBhcmFtZXRlciBhbmQgYSBudW1iZXIgb3Mgcm93cyBhbmQgY29sdW1ucyB0aGF0IHdpbGwgY29tcG9zZSB0aGUgbWF0cml4Lg0KYGBge3J9DQp4IDwtIG1hdHJpeChkYXRhID0gYygxLDIsMyw0KSxucm93ID0gMiwgbmNvbCA9IDIpDQp4DQpgYGANCldlIGRvbid0IG5lZWQgdG8gc3BlY2lmeSB0aGUgbmFtZSBvZiB0aGUgcGFyYW1ldGVycyBvbmNlIHRoYXQgd2UgcHV0IHRoZW0gaW4gdGhlIGNvcnJlY3Qgb3JkZXIuDQpgYGB7cn0NCnggPC0gbWF0cml4KGMoMSwyLDMsNCksMiwyKQ0KeA0KYGBgDQpCeSBkZWZhdWx0ICoqUioqIGNyZWF0ZXMgbWF0cmljZXMgYnkgc3VjY2Vzc2l2ZWx5IGZpbGxpbmcgaW4gY29sdW1ucy4gQWx0ZXJuYXRpdmVsdHkgdGhlICoqYnlyb3cgPSBUUlVFKiogb3B0aW9uIGNhbiBiZSB1c2VkIHRvIHBvcHVsYXRlIHRoZSBtYXRyaXggaW4gb3JkZXIgb2YgdGhlIHJvd3MuDQpgYGB7cn0NCm1hdHJpeChjKDEsMiwzLDQpLDIsMixieXJvdyA9IFRSVUUpDQpgYGANCldlIGNhbiBnZXQgdGhlIHNxdWFyZSByb290IG9mIGEgbnVtYmVyLCBhIHZlY3RvciBvciBhIG1hdHJpeCB3aXRoIHRoZSBmdW5jdGlvbiAqKnNxcnQoKSoqLg0KYGBge3J9DQpzcXJ0KHgpDQpgYGANClNpbWlsYXJseSwgd2UgY2FuIGdldCB0aGUgdmFsdWUgb2YgZWFjaCBlbGVtZW50IHBvd2VyZWQgYnkgdHdvOg0KYGBge3J9DQp4XjINCmBgYA0KVGhlICoqcm5vcm0oKSoqIGZ1bmN0aW9uIGdlbmVyYXRlcyBhIHZlY3RvciBvZiByYW5kb20gbm9ybWFsIHZhcmlhYmxlcywgd2l0aCBmaXJzdCBhcmd1bWVudCAqKm4qKiB0aGUgc2FtcGxlIHNpemUuIEVhY2ggdGltZSB3ZSBjYWxsIHRoaXMgZnVuY3Rpb24sIHdlIHdpbGwgZ2V0IGEgZGlmZmVyZW50IGFuc3dlci4NCmBgYHtyfQ0KeDwtcm5vcm0oNTApDQp4Ow0KYGBgDQpXZSBjcmVhdGUgdHdvIGNvcnJlbGF0ZWQgc2V0cyBvZiBudW1iZXJzLCAqKngqKiBhbmQgKip5KiosIGFuZCB1c2UgdGhlICoqY29yKCkqKiBmdW5jdGlvbiB0byBjb21wdXRlIHRoZSBjb3JyZWxhdGlvbiBiZXR3ZWVuIHRoZW0uDQpgYGB7cn0NCnkgPC0geCArIHJub3JtKDUwLG1lYW49NTAsIHNkID0gLjEpDQpjb3IoeCx5KQ0KYGBgDQpXZSBjYW4gc2V0IHRoZSBhIHNlZWQgdG8gcmVwcm9kdWNlIHRoZSBleGFjdCBzYW1lIHNldCBvZiByYW5kb20gbnVtYmVyczogd2UgY2FuIHVzZSB0aGUgKipzZXQuc2VlZCgpKiogZnVuY3Rpb24gdG8gZG8gdGhpcy4NCmBgYHtyfQ0Kc2V0LnNlZWQoMTMwMykNCnJub3JtKDUwKQ0KYGBgDQpUaGUgKiptZWFuKCkqKiBhbmQgKip2YXIoKSoqIGZ1bmN0aW9ucyBjYW4gYmUgdXNlZCB0byBjb21wdXRlIHRoZSBtZWFuIGFuZCB2YXJpYW5jZSBvZiBhIHZlY3RvciBvZiBudW1iZXJzLiBXZSBjYW4gYXBwbHkgKipzcXJ0KCkqKiBhZnRlciB0aGUgKip2YXIoKSoqIGZ1bmN0aW9uIHRvIGhhdmUgdGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvciBzaW1wbHkgdXNlIHRoZSAqKnNkKCkqKiBmdW5jdGlvbi4NCg0KYGBge3J9DQpzZXQuc2VlZCgzKQ0KeSA8LSBybm9ybSgxMDApDQpjYXQoIk1lYW46IixtZWFuKHkpLCJcblZhcjoiLHZhcih5KSwiXG5TcXJ0KFZhcik6IixzcXJ0KHZhcih5KSksIlxuU3RhbmRhcmQgRGV2aWF0aW9uOiIsc2QoeSkpDQpgYGANCiMjIDIuMy4yIEdyYXBoaWNzDQoNCg0KIyMjIFJlZmVyZW5jZXMNCjEuIEphbWVzLCBHLjsgV2l0dGVuLCBELjsgSGFzdGllLCBULjsgVGlic2hpcmFuaSwgUi4gKipBbiBJbnRyb2R1Y3Rpb24gdG8gU3RhdGlzdGljYWwgTGVhcm5pbmcgLSBTZWNvbmQgRWRpdGlvbioqLiBTcHJpbmdlciwgMjAyMS4NCg==</div>
 
 
 
@@ -1892,7 +2064,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("sla_notebook.Rmd");
+  window.initializeSourceEmbed("2-Statistical_Learning.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

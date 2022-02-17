@@ -4,8 +4,11 @@ output: html_notebook
 ---
 This notebook is a set of studies for the book "An Introduction To Statistical Learning - second Edition". The series of notebooks start at the second chapter - Statistical Learning - since the first chapter does not have any R exercises.
 
-Before starting, R can be downloaded from <http://cran.r-project.org>. This notebook is written and build using RStudio, which can be freely downloaded from
-\<center><http:rstudio.com><\center>
+Before starting, R can be downloaded from 
+<center><http://cran.r-project.org>.</center>
+This notebook is written and build using RStudio, which can be freely downloaded from
+
+<center><http://rstudio.com>.</center>
 
 ## 2.3.1 Basic Commands
 The following command instructs R to join together the numbers 1, 2, 3, and 5, and to save them as a vector named **x**. When we type **x**, it gives us back the vector.
@@ -27,18 +30,61 @@ length(x)
 length(y)
 x+y
 ```
+The **ls()** function allow us to look at a list of all of the objects, such as data and functions, that we have saved so far. The **rm()** function can be used to delete any that we don't want.
 ```{r}
 ls()
 rm(x,y)
 ```
+And is also possible to remove all objects at once:
 ```{r}
 rm(list=ls())
 ```
+The **matrix()** function will be essencial to use algebra in our statistical learning. The function takes a **data** parameter and a number os rows and columns that will compose the matrix.
+```{r}
+x <- matrix(data = c(1,2,3,4),nrow = 2, ncol = 2)
+x
+```
+We don't need to specify the name of the parameters once that we put them in the correct order.
+```{r}
+x <- matrix(c(1,2,3,4),2,2)
+x
+```
+By default **R** creates matrices by successively filling in columns. Alternativelty the **byrow = TRUE** option can be used to populate the matrix in order of the rows.
+```{r}
+matrix(c(1,2,3,4),2,2,byrow = TRUE)
+```
+We can get the square root of a number, a vector or a matrix with the function **sqrt()**.
+```{r}
+sqrt(x)
+```
+Similarly, we can get the value of each element powered by two:
+```{r}
+x^2
+```
+The **rnorm()** function generates a vector of random normal variables, with first argument **n** the sample size. Each time we call this function, we will get a different answer.
+```{r}
+x<-rnorm(50)
+x;
+```
+We create two correlated sets of numbers, **x** and **y**, and use the **cor()** function to compute the correlation between them.
+```{r}
+y <- x + rnorm(50,mean=50, sd = .1)
+cor(x,y)
+```
+We can set the a seed to reproduce the exact same set of random numbers: we can use the **set.seed()** function to do this.
+```{r}
+set.seed(1303)
+rnorm(50)
+```
+The **mean()** and **var()** functions can be used to compute the mean and variance of a vector of numbers. We can apply **sqrt()** after the **var()** function to have the standard deviation or simply use the **sd()** function.
+
+```{r}
+set.seed(3)
+y <- rnorm(100)
+cat("Mean:",mean(y),"\nVar:",var(y),"\nSqrt(Var):",sqrt(var(y)),"\nStandard Deviation:",sd(y))
+```
+## 2.3.2 Graphics
+
 
 ### References
-
-
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
+1. James, G.; Witten, D.; Hastie, T.; Tibshirani, R. **An Introduction to Statistical Learning - Second Edition**. Springer, 2021.
