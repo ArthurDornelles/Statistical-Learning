@@ -84,6 +84,52 @@ y <- rnorm(100)
 cat("Mean:",mean(y),"\nVar:",var(y),"\nSqrt(Var):",sqrt(var(y)),"\nStandard Deviation:",sd(y))
 ```
 ## 2.3.2 Graphics
+The **plot()** function is the primary  way to plot data in **R**. For instance, **plot(x,y)** produces a scatterplot of the numbers **x** versus the numbers in **y**. Passing in the argument **xlab** will result in a label on the x-axis.
+```{r}
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
+plot(x, y, xlab = "this is the x-axis",
+     ylab = "this is the y-axis",
+     main = "Plot of X vs Y")
+```
+We will often want to save the output of an R plot. For example, we can use the function **pdf()** to create a pdf - and, for instante, if you want to create a jpeg, you can use **jpeg()**.
+```{r}
+pdf("Figure.pdf")
+plot(x,y,col = "green")
+dev.off()
+```
+The function **dev.off()** indicates to R that we are done creating the plot.
+The function **seq()** can be used to create a sequence of numbers. For example, **seq(a,b)** makes a vector of integers between **a** and **b**. We can explore more of the **seq()** function and see, for instance the **seq(0, 1, length = 10)** property to make a sequence of 10 numbers equally spaced between 0 and 1.  
+```{r}
+seq(1, 10)
+```
+We can type **3:11** as a shorthand for **seq(3,11)** for integers arguments.
+We will now create some more sophisticated plots. The **outer()** function produces a matrix using the values of arrays as columns and rows and a function to populate the matrix. The **countour()** function produces a _countour plot_ in order to represent three-dimensional data; it is like a topographical map. 
+* It takes three arguments:
+ + A vector of the **x** values (the first dimension),
+ + A vector of the **y** values (the second dimension), and
+ + A matrix whose elements correspond to the **z** value (the third dimension) for each pair of (**x**,**y**) coordinates.
+ 
+```{r}
+x <- seq(-pi, pi, length = 50)
+y <- x
+f <- outer(x,y, function(x,y) cos(y)/(1+x^2))
+contour(x, y, f)
+contour(x, y, f, nlevels = 45, add = T)
+```
+The **t()** function makes the transpose of a given matrix or data frame.
+```{r}
+fa  <- (f - t(f))/2 
+contour(x, y, fa, nlevels = 15)
+```
+The **image()** function works the same way as **contour()**, except is a color-coded plot whose colors depend on the **z** value - this is known as *heatmap*. The **persp()** can be used to produce a three-dimensional plot, we can pass the arguments **theta** and **phi** to control the view angles of the plot.
+```{r}
+image(x, y, fa)
+persp(x, y, fa)
+persp(x, y, fa, theta = 30)
+persp(x,y,fa, theta = 30, phi = 70)
+```
 
 
 ### References
