@@ -132,6 +132,7 @@ persp(x,y,fa, theta = 30, phi = 70)
 ## 2.3.4 Loading Data
 
 As almost every statistical learning project, one of the first steps involves importing a data set into the code. In R, the most simple way of loading data is the `read.table()` function. In the other way around, the `write.table()` function allows us to quickly write data into a file.
+</br><p>The following command will load the  **Auto.data** file into **R** and store it as an object called **Auto**, in a format referred to as _data frame_. Once you loaded the data as a data frame, you can use the function `View()` to view the data in a spreadsheet-like window. The `head()` function can also be used to view the first few rows of the data - which can be more practical if you only want to see the format of a data frame.
 
 
 ```{r}
@@ -139,12 +140,14 @@ Auto <- read.table("data/Auto.data")
 View(Auto)
 head(Auto)
 ```
+The data set above has not been loaded correctly, because **R** has assumed that the variable names are part of the data and so has included them in the first row. We can use the parameter `header = T` (or `header = True`) in the `read.table()` to tell **R** that the first line of the files contains the variable names. Another option is to tell **R** that any time it sees a particular character or set of characters (such as a question mark), it should treat it as a missing element of the data matrix - in this example, we set **?** as a NaN value with `na.strings ="?"`. 
 ```{r}
 Auto <- read.table("data/Auto.data", header = T, na.strings = "?",
                    stringsAsFactors = T)
 head(Auto)
 ```
-
+We can also tell **R** to treat any variable containing character strings to be interpreted as a qualitative variable with `stringsAsFactros = T`.
+</br> <p> An easy way to load data from Excel into **R** is to use the `read.casv()` function.
 ```{r}
 Auto <- read.csv("data/Auto.csv", na.strings = "?",
                  stringsAsFactors = T)
@@ -153,13 +156,16 @@ head(Auto)
 ```{r}
 dim(Auto)
 ```
+The `dim()` function tells us that the data has 397 observations, or rows, and nine variables, or columns. We can slice a data frame as we would slice a collection.
 ```{r}
 Auto[1:4, ]
 ```
+There are various ways to deal with the missing data. In this case, only five of the rows contain missing observations, and so we choose to use the `na.omit()` function to simply remove these rows.
 ```{r}
 Auto <- na.omit(Auto)
 dim(Auto)
 ```
+We can use the `names()` function to check the variable names.
 ```{r}
 names(Auto)
 ```
