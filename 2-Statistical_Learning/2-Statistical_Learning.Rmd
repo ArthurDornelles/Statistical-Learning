@@ -169,7 +169,23 @@ We can use the `names()` function to check the variable names.
 ```{r}
 names(Auto)
 ```
+## 2.3.5 Additional Graphical and Numerical Summaries
 
+```{r}
+plot(Auto$cylinders, Auto$mpg)
+```
+```{r}
+attach(Auto)
+plot(cylinders, mpg)
+```
+```{r}
+cylinders <- as.factor(cylinders)
+plot(cylinders, mpg, col = "red", varwidth = T)
+```
+```{r}
+plot(cylinders, mpg,  varwidth = T, horizontal = T,
+     col = "red", xlab = "cylinders", ylab = "MPG", )
+```
 
 
 ### References
