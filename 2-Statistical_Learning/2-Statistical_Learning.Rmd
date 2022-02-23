@@ -11,26 +11,25 @@ This notebook is written and build using RStudio, which can be freely downloaded
 <center><http://rstudio.com>.</center>
 
 ## 2.3.1 Basic Commands
-The following command instructs R to join together the numbers 1, 2, 3, and 5, and to save them as a vector named **x**. When we type **x**, it gives us back the vector.
+The following command instructs R to join together the numbers 1, 2, 3, and 5, and to save them as a vector named `x`. When we type `x`, it gives us back the vector.
 ```{r}
 x <- c(1,3,2,5)
 x
 ```
-
-We can also save things using **=** rather than **<-**:
+We can also save things using `=` rather than `<-`:
 ```{r}
 x = c(1,6,2)
 y = c(1,4,3)
 c(x,y)
 ```
-In additions, typing **?funcname** will cause R to open a new help file window with additional information about the function **funcname()**.
-We can check a variable length using the **length()** function.
+In additions, typing `?funcname` will cause R to open a new help file window with additional information about the function `funcname()`.
+We can check a variable length using the `length()` function.
 ```{r}
 length(x)
 length(y)
 x+y
 ```
-The **ls()** function allow us to look at a list of all of the objects, such as data and functions, that we have saved so far. The **rm()** function can be used to delete any that we don't want.
+The `ls()` function allow us to look at a list of all of the objects, such as data and functions, that we have saved so far. The `rm()` function can be used to delete any that we don't want.
 ```{r}
 ls()
 rm(x,y)
@@ -39,7 +38,7 @@ And is also possible to remove all objects at once:
 ```{r}
 rm(list=ls())
 ```
-The **matrix()** function will be essencial to use algebra in our statistical learning. The function takes a **data** parameter and a number os rows and columns that will compose the matrix.
+The `matrix()` function will be essential to use algebra in our statistical learning. The function takes a `data` parameter and a number of rows and columns that will compose the matrix.
 ```{r}
 x <- matrix(data = c(1,2,3,4),nrow = 2, ncol = 2)
 x
@@ -49,11 +48,11 @@ We don't need to specify the name of the parameters once that we put them in the
 x <- matrix(c(1,2,3,4),2,2)
 x
 ```
-By default **R** creates matrices by successively filling in columns. Alternativelty the **byrow = TRUE** option can be used to populate the matrix in order of the rows.
+By default `R` creates matrices by successively filling in columns. Alternatively the `byrow = TRUE` option can be used to populate the matrix in order of the rows.
 ```{r}
 matrix(c(1,2,3,4),2,2,byrow = TRUE)
 ```
-We can get the square root of a number, a vector or a matrix with the function **sqrt()**.
+We can get the square root of a number, a vector or a matrix with the function `sqrt()`.
 ```{r}
 sqrt(x)
 ```
@@ -61,22 +60,22 @@ Similarly, we can get the value of each element powered by two:
 ```{r}
 x^2
 ```
-The **rnorm()** function generates a vector of random normal variables, with first argument **n** the sample size. Each time we call this function, we will get a different answer.
+The `rnorm()` function generates a vector of random normal variables, with first argument `n` the sample size. Each time we call this function, we will get a different answer.
 ```{r}
 x<-rnorm(50)
 x;
 ```
-We create two correlated sets of numbers, **x** and **y**, and use the **cor()** function to compute the correlation between them.
+We create two correlated sets of numbers, `x` and `y`, and use the `cor()` function to compute the correlation between them.
 ```{r}
 y <- x + rnorm(50,mean=50, sd = .1)
 cor(x,y)
 ```
-We can set the a seed to reproduce the exact same set of random numbers: we can use the **set.seed()** function to do this.
+We can set the a seed to reproduce the exact same set of random numbers: we can use the `set.seed()` function to do this.
 ```{r}
 set.seed(1303)
 rnorm(50)
 ```
-The **mean()** and **var()** functions can be used to compute the mean and variance of a vector of numbers. We can apply **sqrt()** after the **var()** function to have the standard deviation or simply use the **sd()** function.
+The `mean()` and `var()` functions can be used to compute the mean and variance of a vector of numbers. We can apply `sqrt()` after the `var()` function to have the standard deviation or simply use the `sd()` function.
 
 ```{r}
 set.seed(3)
@@ -84,7 +83,7 @@ y <- rnorm(100)
 cat("Mean:",mean(y),"\nVar:",var(y),"\nSqrt(Var):",sqrt(var(y)),"\nStandard Deviation:",sd(y))
 ```
 ## 2.3.2 Graphics
-The **plot()** function is the primary  way to plot data in **R**. For instance, **plot(x,y)** produces a scatterplot of the numbers **x** versus the numbers in **y**. Passing in the argument **xlab** will result in a label on the x-axis.
+The `plot()` function is the primary  way to plot data in `R`. For instance, `plot(x,y)` produces a scatter plot of the numbers `x` versus the numbers in `y`. Passing in the argument `xlab` will result in a label on the x-axis.
 ```{r}
 x <- rnorm(100)
 y <- rnorm(100)
@@ -93,19 +92,19 @@ plot(x, y, xlab = "this is the x-axis",
      ylab = "this is the y-axis",
      main = "Plot of X vs Y")
 ```
-We will often want to save the output of an R plot. For example, we can use the function **pdf()** to create a pdf - and, for instante, if you want to create a jpeg, you can use **jpeg()**.
+We will often want to save the output of an R plot. For example, we can use the function `pdf()` to create a pdf - and, for instance, if you want to create a jpeg, you can use `jpeg()`.
 ```{r}
 pdf("Figure.pdf")
 plot(x,y,col = "green")
 dev.off()
 ```
-The function **dev.off()** indicates to R that we are done creating the plot.
-The function **seq()** can be used to create a sequence of numbers. For example, **seq(a,b)** makes a vector of integers between **a** and **b**. We can explore more of the **seq()** function and see, for instance the **seq(0, 1, length = 10)** property to make a sequence of 10 numbers equally spaced between 0 and 1.  
+The function `dev.off()` indicates to R that we are done creating the plot.
+The function `seq()` can be used to create a sequence of numbers. For example, `seq(a,b)` makes a vector of integers between `a` and `b`. We can explore more of the `seq()` function and see, for instance the `seq(0, 1, length = 10)` property to make a sequence of 10 numbers equally spaced between 0 and 1.  
 ```{r}
 seq(1, 10)
 ```
-We can type **3:11** as a shorthand for **seq(3,11)** for integers arguments.
-We will now create some more sophisticated plots. The **outer()** function produces a matrix using the values of arrays as columns and rows and a function to populate the matrix. The **countour()** function produces a _countour plot_ in order to represent three-dimensional data; it is like a topographical map. 
+We can type `3:11` as a shorthand for `seq(3,11)` for integers arguments.
+We will now create some more sophisticated plots. The `outer()` function produces a matrix using the values of arrays as columns and rows and a function to populate the matrix. The `countour()` function produces a _countour plot_ in order to represent three-dimensional data; it is like a topographical map. 
 * It takes three arguments:
  + A vector of the **x** values (the first dimension),
  + A vector of the **y** values (the second dimension), and
@@ -123,13 +122,48 @@ The **t()** function makes the transpose of a given matrix or data frame.
 fa  <- (f - t(f))/2 
 contour(x, y, fa, nlevels = 15)
 ```
-The **image()** function works the same way as **contour()**, except is a color-coded plot whose colors depend on the **z** value - this is known as *heatmap*. The **persp()** can be used to produce a three-dimensional plot, we can pass the arguments **theta** and **phi** to control the view angles of the plot.
+The `image()` function works the same way as `contour()`, except is a color-coded plot whose colors depend on the **z** value - this is known as *heatmap*. The `persp()` can be used to produce a three-dimensional plot, we can pass the arguments **theta** and **phi** to control the view angles of the plot.
 ```{r}
 image(x, y, fa)
 persp(x, y, fa)
 persp(x, y, fa, theta = 30)
 persp(x,y,fa, theta = 30, phi = 70)
 ```
+## 2.3.4 Loading Data
+
+As almost every statistical learning project, one of the first steps involves importing a data set into the code. In R, the most simple way of loading data is the `read.table()` function. In the other way around, the `write.table()` function allows us to quickly write data into a file.
+
+
+```{r}
+Auto <- read.table("data/Auto.data")
+View(Auto)
+head(Auto)
+```
+```{r}
+Auto <- read.table("data/Auto.data", header = T, na.strings = "?",
+                   stringsAsFactors = T)
+head(Auto)
+```
+
+```{r}
+Auto <- read.csv("data/Auto.csv", na.strings = "?",
+                 stringsAsFactors = T)
+head(Auto)
+```
+```{r}
+dim(Auto)
+```
+```{r}
+Auto[1:4, ]
+```
+```{r}
+Auto <- na.omit(Auto)
+dim(Auto)
+```
+```{r}
+names(Auto)
+```
+
 
 
 ### References
